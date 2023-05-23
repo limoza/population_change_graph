@@ -17,11 +17,22 @@
     }
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint"],
-
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
     "react-app",
-    "react-app/jest"
-  ]
+    "react-app/jest",
+    "plugin:import/recommended",
+    "plugin:import/warnings"
+  ],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ]
+  }
 }
