@@ -1,5 +1,6 @@
 import '@/styles/main.css'
+import { AppContent } from '@/components/AppContent'
 
 export default function Home() {
-  return <main className="main">ベース作成</main>
+  return <AppContent />
 }
