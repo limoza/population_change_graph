@@ -4,11 +4,11 @@ import { PrefDataType, CheckedPrefectures, ClickCheckBox } from '@/types'
 type Props = {
   prefecture: PrefDataType
   checkedPrefectures: CheckedPrefectures
-  clickCheckBox: ClickCheckBox
+  checkPrefectures: ClickCheckBox
 }
 
 export const CheckBox = React.memo(
-  ({ prefecture, checkedPrefectures, clickCheckBox }: Props) => {
+  ({ prefecture, checkedPrefectures, checkPrefectures }: Props) => {
     const { prefCode, prefName } = prefecture
     const isChecked = checkedPrefectures.includes(prefCode)
 
@@ -20,13 +20,11 @@ export const CheckBox = React.memo(
             value={prefCode}
             name="prefectureItem"
             id={`prefCode-${prefCode}`}
+            data-pref-name={prefName}
             checked={isChecked}
-            onChange={(e) => clickCheckBox(e)}
+            onChange={(e) => checkPrefectures(e)}
           />
-          <label htmlFor={`prefCode-${prefCode}`}>
-            {prefCode}
-            {prefName}
-          </label>
+          <label htmlFor={`prefCode-${prefCode}`}>{prefName}</label>
         </div>
       </li>
     )

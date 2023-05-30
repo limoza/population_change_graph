@@ -5,13 +5,13 @@ import { PrefsDataType, CheckedPrefectures, ClickCheckBox } from '@/types'
 type Props = {
   prefectures: PrefsDataType
   checkedPrefectures: CheckedPrefectures
-  clickCheckBox: ClickCheckBox
+  checkPrefectures: ClickCheckBox
 }
 
 export const CheckBoxList = ({
   prefectures,
   checkedPrefectures,
-  clickCheckBox,
+  checkPrefectures,
 }: Props) => {
   return (
     <fieldset name="prefectureList">
@@ -22,7 +22,7 @@ export const CheckBoxList = ({
             key={`prefCode-${prefecture.prefCode}`}
             prefecture={prefecture}
             checkedPrefectures={checkedPrefectures}
-            clickCheckBox={clickCheckBox}
+            checkPrefectures={checkPrefectures}
           />
         ))}
       </ul>
