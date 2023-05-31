@@ -1,0 +1,9 @@
+.header {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+  font-weight: bold;
+  padding: var(--spacing-size5) var(--spacing-size2);
+  text-align: center;
+  background-color: var(--gray-900);
+  color: var(--white);
+}
