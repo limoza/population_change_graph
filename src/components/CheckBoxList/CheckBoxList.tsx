@@ -16,7 +16,7 @@ export const CheckBoxList = ({
   return (
     <fieldset name="prefectureContainer" className="prefectureContainer">
       <legend>
-        <h2 className="sectionTitle">都道府県一覧</h2>
+        <h2 className="prefectureContainer__title">都道府県一覧</h2>
       </legend>
       <ul className="prefectureList">
         {prefectures.map((prefecture) => (
