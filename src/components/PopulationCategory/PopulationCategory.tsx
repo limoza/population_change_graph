@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  PrefDataType,
-  CheckedPrefectures,
-  ClickCheckBox,
-  ChangeCategories,
-} from '@/types'
+import { ChangeCategories } from '@/types'
 
 type Props = {
   populationCategory: {
@@ -22,7 +17,6 @@ export const PopulationCategory = React.memo(
     changeCategories,
   }: Props) => {
     const { id, label } = populationCategory
-    // const isChecked = checkedPrefectures.includes(prefCode)
 
     return (
       <li>

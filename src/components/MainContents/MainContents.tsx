@@ -7,19 +7,19 @@ import {
   REASAS_POPULATION_URL,
 } from '@/constants/REASAS/constants'
 import { useGetPrefsData } from '@/hooks/useGetPrefsData'
+import { changeSelectedPrefectures } from '@/lib/changeSelectedPrefectures'
+import { createSeriesData } from '@/lib/createSeriesData'
+import { deletedData } from '@/lib/deletedData'
+import { formatData } from '@/lib/formatData'
 import { populationFetcher } from '@/lib/populationFetcher'
-import {
-  ExtractedPopulationData,
-  PopulationSeries,
-  ExtractedPopulationYearlyData,
-  FormattedPopulationData,
-} from '@/types'
+import { PopulationSeries, FormattedPopulationData } from '@/types'
 
 export const MainContents = () => {
   const [checkedPrefectures, setCheckedPrefectures] = useState<number[]>([])
   const [checkedPrefectureName, setCheckedPrefectureName] = useState<string>('')
   const [selectedPopulationCategory, setSelectedPopulationCategory] =
     useState<number>(1)
+  const [previousCategory, setPreviousCategory] = useState<number>(1)
   const [populationSaveData, setPopulationSaveData] = useState<
     FormattedPopulationData[]
   >([])
@@ -37,97 +37,59 @@ export const MainContents = () => {
     trigger,
   } = useSWRMutation(REASAS_POPULATION_URL, populationFetcher)
 
-  const changeSelectedPrefectures = (
-    checkedValue: number,
-    isChecked: boolean
-  ) => {
-    isChecked
-      ? setCheckedPrefectures((prev) => {
-          const newState = [...prev, checkedValue]
-          return newState
-        })
-      : setCheckedPrefectures((prev) => {
-          const newState = prev.filter((item) => item !== checkedValue)
-          return newState
-        })
-  }
-
-  const deleteSaveData = (prefName: string) => {
-    setPopulationSaveData((prev) => {
-      const newData = prev.filter((item) => item.name !== prefName)
-      return newData
-    })
-  }
-
   const checkPrefectures = (e: ChangeEvent<HTMLInputElement>) => {
     const checkedValue = Number(e.target.value)
     const isChecked = e.target.checked
     const prefName = e.target.getAttribute('data-pref-name')
-    changeSelectedPrefectures(checkedValue, isChecked)
+    setCheckedPrefectures((prev) => {
+      const newData = changeSelectedPrefectures(checkedValue, isChecked, prev)
+      return newData
+    })
     prefName && setCheckedPrefectureName(prefName)
-    isChecked
-      ? trigger({ prefID: checkedValue })
-      : prefName && deleteSaveData(prefName)
+    if (isChecked) {
+      trigger({ prefID: checkedValue })
+    } else {
+      setPopulationSaveData((prev) => {
+        const newData = prefName ? deletedData(prefName, prev) : []
+        setSeries(createSeriesData(newData, selectedPopulationCategory))
+        return newData
+      })
+    }
   }
 
   const changeCategories = (e: ChangeEvent<HTMLInputElement>) =>
     setSelectedPopulationCategory(Number(e.target.value))
 
-  const updatePopulationSaveData = (formatData: FormattedPopulationData) => {
-    setPopulationSaveData((prev) => {
-      const newState = [...prev, formatData]
-      return newState
-    })
-  }
-
-  const formatData = (
-    extractedPopulationData: ExtractedPopulationData[],
-    checkedPrefectureName: string
-  ) => {
-    const formatPopulationData = extractedPopulationData.map(
-      (item: ExtractedPopulationData) => {
-        return {
-          label: item.label,
-          data: item.data.map(
-            (item: ExtractedPopulationYearlyData) => item.value
-          ),
-        }
-      }
-    )
-
-    const newData = {
-      name: checkedPrefectureName,
-      data: formatPopulationData,
-    }
-
-    return newData
-  }
-
   useEffect(() => {
     if (populationData) {
       const { data: extractedPopulationData } = populationData.result
-      updatePopulationSaveData(
-        formatData(extractedPopulationData, checkedPrefectureName)
-      )
+
+      const isChangeCategory = previousCategory !== selectedPopulationCategory
+
+      if (isChangeCategory) {
+        setPreviousCategory(selectedPopulationCategory)
+      } else {
+        const formattedData = formatData(
+          extractedPopulationData,
+          checkedPrefectureName
+        )
+        setPopulationSaveData((prev) => {
+          const newState = [...prev, formattedData]
+          return newState
+        })
+      }
+
+      const seriesData = isChangeCategory
+        ? populationSaveData
+        : [
+            ...populationSaveData,
+            formatData(extractedPopulationData, checkedPrefectureName),
+          ]
+
+      setSeries(createSeriesData(seriesData, selectedPopulationCategory))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [populationData])
-
-  useEffect(() => {
-    if (populationSaveData.length) {
-      const newData = populationSaveData.map((item) => {
-        return {
-          name: item.name,
-          type: 'line',
-          data: item.data[selectedPopulationCategory - 1].data,
-        }
-      })
-
-      setSeries(() => newData)
-    } else {
-      setSeries(() => [])
-    }
-  }, [populationSaveData, selectedPopulationCategory])
+  }, [populationData, selectedPopulationCategory])
 
   if (prefsError) return <div>failed to load</div>
   if (populationError) return <div>failed to load</div>
