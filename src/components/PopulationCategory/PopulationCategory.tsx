@@ -17,6 +17,7 @@ export const PopulationCategory = React.memo(
     changeCategories,
   }: Props) => {
     const { id, label } = populationCategory
+    const isChecked = id === selectedPopulationCategory
 
     return (
       <li>
@@ -26,7 +27,7 @@ export const PopulationCategory = React.memo(
             value={id}
             name="populationCategory"
             id={`populationCategory-${id}`}
-            checked={id === selectedPopulationCategory}
+            checked={isChecked}
             onChange={(e) => changeCategories(e)}
           />
           <label htmlFor={`populationCategory-${id}`}>{label}</label>

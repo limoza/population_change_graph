@@ -22,7 +22,7 @@ export const CheckBox = React.memo(
           data-pref-name={prefName}
           checked={isChecked}
           onChange={(e) => checkPrefectures(e)}
-          className="visually-hidden checkboxelem"
+          className="visually-hidden"
         />
         <label
           className={`prefectureList__item__label ${

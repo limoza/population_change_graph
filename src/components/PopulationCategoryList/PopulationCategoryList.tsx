@@ -14,18 +14,20 @@ export const PopulationCategoryList = ({
   changeCategories,
 }: Props) => {
   return (
-    <ul>
-      {populationCategories.map((populationCategory) => (
-        <PopulationCategory
-          key={`category-${populationCategory.id}`}
-          populationCategory={populationCategory}
-          selectedPopulationCategory={selectedPopulationCategory}
-          changeCategories={changeCategories}
-          // prefecture={prefecture}
-          // checkedPrefectures={checkedPrefectures}
-          // clickPrefectures={clickPrefectures}
-        />
-      ))}
-    </ul>
+    <div className="categoryContainer">
+      <ul className="categoryList">
+        {populationCategories.map((populationCategory) => (
+          <PopulationCategory
+            key={`category-${populationCategory.id}`}
+            populationCategory={populationCategory}
+            selectedPopulationCategory={selectedPopulationCategory}
+            changeCategories={changeCategories}
+            // prefecture={prefecture}
+            // checkedPrefectures={checkedPrefectures}
+            // clickPrefectures={clickPrefectures}
+          />
+        ))}
+      </ul>
+    </div>
   )
 }

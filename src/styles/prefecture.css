@@ -1,5 +1,6 @@
 .prefectureContainer {
-  padding: var(--spacing-size4);
+  padding-left: var(--spacing-size4);
+  padding-right: var(--spacing-size4);
 
   > legend {
     width: 100%;
@@ -18,12 +19,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  margin-top: var(--spacing-size4);
   font-size: var(--font-size-lg);
   line-height: var(--line-height-lg);
   gap: var(--spacing-size2) var(--spacing-size4);
-}
-
-.prefectureList__item {
 }
 
 .prefectureList__item__label {

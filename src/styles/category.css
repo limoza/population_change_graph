@@ -1,0 +1,15 @@
+.categoryContainer {
+  margin-top: var(--spacing-size8);
+  padding-left: var(--spacing-size4);
+  padding-right: var(--spacing-size4);
+}
+
+.categoryList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+  gap: 0 var(--spacing-size4);
+}
