@@ -13,19 +13,25 @@ export const CheckBox = React.memo(
     const isChecked = checkedPrefectures.includes(prefCode)
 
     return (
-      <li>
-        <div>
-          <input
-            type="checkbox"
-            value={prefCode}
-            name="prefectureItem"
-            id={`prefCode-${prefCode}`}
-            data-pref-name={prefName}
-            checked={isChecked}
-            onChange={(e) => checkPrefectures(e)}
-          />
-          <label htmlFor={`prefCode-${prefCode}`}>{prefName}</label>
-        </div>
+      <li className="prefectureList__item">
+        <input
+          type="checkbox"
+          value={prefCode}
+          name="prefectureItem"
+          id={`prefCode-${prefCode}`}
+          data-pref-name={prefName}
+          checked={isChecked}
+          onChange={(e) => checkPrefectures(e)}
+          className="visually-hidden checkboxelem"
+        />
+        <label
+          className={`prefectureList__item__label ${
+            isChecked ? `prefectureList__item__label--checked` : ``
+          }`}
+          htmlFor={`prefCode-${prefCode}`}
+        >
+          {prefName}
+        </label>
       </li>
     )
   },

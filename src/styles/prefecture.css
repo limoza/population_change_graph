@@ -1,0 +1,38 @@
+.prefectureContainer {
+  padding: var(--spacing-size4);
+
+  > legend {
+    width: 100%;
+  }
+}
+
+.prefectureContainer__title {
+  margin-top: var(--spacing-size4);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  font-weight: bold;
+  text-align: center;
+}
+
+.prefectureList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+  gap: var(--spacing-size2) var(--spacing-size4);
+}
+
+.prefectureList__item {
+}
+
+.prefectureList__item__label {
+  display: block;
+  padding: var(--spacing-size2);
+  background-color: var(--gray-100);
+  border-radius: 4px;
+}
+
+.prefectureList__item__label--checked {
+  background-color: var(--blue-200);
+}

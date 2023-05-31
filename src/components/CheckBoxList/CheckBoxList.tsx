@@ -14,9 +14,11 @@ export const CheckBoxList = ({
   checkPrefectures,
 }: Props) => {
   return (
-    <fieldset name="prefectureList">
-      <legend>都道府県一覧</legend>
-      <ul>
+    <fieldset name="prefectureContainer" className="prefectureContainer">
+      <legend>
+        <h2 className="sectionTitle">都道府県一覧</h2>
+      </legend>
+      <ul className="prefectureList">
         {prefectures.map((prefecture) => (
           <CheckBox
             key={`prefCode-${prefecture.prefCode}`}

@@ -14,21 +14,18 @@ export const PopulationCategoryList = ({
   changeCategories,
 }: Props) => {
   return (
-    <fieldset name="prefectureList">
-      <legend>カテゴrー</legend>
-      <ul>
-        {populationCategories.map((populationCategory) => (
-          <PopulationCategory
-            key={`category-${populationCategory.id}`}
-            populationCategory={populationCategory}
-            selectedPopulationCategory={selectedPopulationCategory}
-            changeCategories={changeCategories}
-            // prefecture={prefecture}
-            // checkedPrefectures={checkedPrefectures}
-            // checkPrefectures={checkPrefectures}
-          />
-        ))}
-      </ul>
-    </fieldset>
+    <ul>
+      {populationCategories.map((populationCategory) => (
+        <PopulationCategory
+          key={`category-${populationCategory.id}`}
+          populationCategory={populationCategory}
+          selectedPopulationCategory={selectedPopulationCategory}
+          changeCategories={changeCategories}
+          // prefecture={prefecture}
+          // checkedPrefectures={checkedPrefectures}
+          // clickPrefectures={clickPrefectures}
+        />
+      ))}
+    </ul>
   )
 }

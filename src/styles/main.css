@@ -1,3 +1,8 @@
+html {
+  font-family: 'Helvetica Neue', 'Helvetica', 'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN', 'Arial', 'Yu Gothic', 'Meiryo', sans-serif;
+}
+
 body {
   --font-size-base: 1rem;
   --line-height-base: 1.5rem;
