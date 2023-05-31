@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import useSWR from 'swr'
 import { CheckBoxList } from '../CheckBoxList'
 import { CheckBox } from './CheckBox'
-import { prefecturesTestData } from '@/fixture'
+import { prefecturesTestData } from '@/test/fixture'
 
 jest.mock('swr')
 

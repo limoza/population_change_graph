@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import useSWR from 'swr'
 import { MainContents } from './MainContents'
-import { prefecturesTestData } from '@/fixture'
+import { prefecturesTestData } from '@/test/fixture'
 
 jest.mock('swr')
 
