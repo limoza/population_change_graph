@@ -1,21 +1,24 @@
 // import { render, screen } from '@testing-library/react'
-// import useSWR from 'swr'
-// import { CheckBoxList } from '../CheckBoxList'
-// import { CheckBox } from './CheckBox'
-// import { prefecturesTestData } from '@/fixture'
+// import { Header } from './Header'
 
-// jest.mock('swr')
+// describe('Header components Test', () => {
+//   it('Ensure that there is only one header', () => {
+//     render(<Header />)
+//     expect(screen.getAllByRole('banner')).toHaveLength(1)
+//   })
 
-// describe('CheckBox components Test', () => {
-//   it('All checkbox for each prefecture should be displayed.', () => {
-//     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//     // @ts-ignore
-//     useSWR.mockReturnValue({
-//       data: { result: prefecturesTestData },
-//     })
-//     render(
-//       <CheckBoxList prefectures={prefecturesTestData} checkedPrefectures={[]} />
-//     )
-//     expect(screen.getAllByRole('checkbox')).toHaveLength(47)
+//   it('Ensure that there is only one h1', () => {
+//     render(<Header />)
+//     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
+//   })
+
+//   it('should display the correct text', () => {
+//     render(<Header />)
+//     expect(
+//       screen.getByRole('heading', {
+//         level: 1,
+//         name: '都道府県別 総人口推移グラフ',
+//       })
+//     ).toBeInTheDocument()
 //   })
 // })

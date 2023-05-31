@@ -1,5 +1,5 @@
 import { Chart } from '@/components/Chart'
-import { PopulationCategoryList } from '@/components/PopulationCategoryList'
+import { PopulationCategory } from '@/components/PopulationCategory'
 import { PopulationSeries, ChangeCategories } from '@/types'
 
 type Props = {
@@ -15,7 +15,7 @@ export const ChartContainer = ({
 }: Props) => {
   return (
     <>
-      <PopulationCategoryList
+      <PopulationCategory
         selectedPopulationCategory={selectedPopulationCategory}
         changeCategories={changeCategories}
       />

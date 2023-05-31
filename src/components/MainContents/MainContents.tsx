@@ -57,8 +57,11 @@ export const MainContents = () => {
     }
   }
 
-  const changeCategories = (e: ChangeEvent<HTMLInputElement>) =>
-    setSelectedPopulationCategory(Number(e.target.value))
+  const changeCategories = (e: ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = Number(e.target.value)
+    setSelectedPopulationCategory(selectedValue)
+    if (!populationData) setPreviousCategory(selectedValue)
+  }
 
   useEffect(() => {
     if (populationData) {

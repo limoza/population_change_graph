@@ -1,48 +1,34 @@
 import React from 'react'
+import { POPULATION_CATEGORIES } from '@/constants/population/constants'
 import { ChangeCategories } from '@/types'
 
 type Props = {
-  populationCategory: {
-    id: number
-    label: string
-  }
   selectedPopulationCategory: number
   changeCategories: ChangeCategories
 }
 
-export const PopulationCategory = React.memo(
-  ({
-    populationCategory,
-    selectedPopulationCategory,
-    changeCategories,
-  }: Props) => {
-    const { id, label } = populationCategory
-    const isChecked = id === selectedPopulationCategory
+const populationCategories = POPULATION_CATEGORIES
 
-    return (
-      <li>
-        <div>
-          <input
-            type="radio"
-            value={id}
-            name="populationCategory"
-            id={`populationCategory-${id}`}
-            checked={isChecked}
-            onChange={(e) => changeCategories(e)}
-          />
-          <label htmlFor={`populationCategory-${id}`}>{label}</label>
-        </div>
-      </li>
-    )
-  },
-  (prevProps, nextProps) => {
-    const prevCheck =
-      prevProps.selectedPopulationCategory === prevProps.populationCategory.id
-    const nextCheck =
-      nextProps.selectedPopulationCategory === nextProps.populationCategory.id
-
-    return prevCheck === nextCheck
-  }
-)
-
-PopulationCategory.displayName = 'PopulationCategory'
+export const PopulationCategory = ({
+  selectedPopulationCategory,
+  changeCategories,
+}: Props) => {
+  return (
+    <div className="categoryContainer">
+      <select
+        className="categoryList"
+        onChange={(e) => changeCategories(e)}
+        value={selectedPopulationCategory}
+      >
+        {populationCategories.map((populationCategory) => {
+          const { id, label } = populationCategory
+          return (
+            <option key={`category-${id}`} value={id}>
+              {label}
+            </option>
+          )
+        })}
+      </select>
+    </div>
+  )
+}
