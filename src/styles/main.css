@@ -7,3 +7,9 @@ body {
   --font-size-base: 1rem;
   --line-height-base: 1.5rem;
 }
+
+main {
+  max-width: 950px;
+  margin-right: auto;
+  margin-left: auto;
+}

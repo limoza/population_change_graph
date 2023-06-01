@@ -68,14 +68,18 @@ export const Chart = (
   return (
     <>
       {props.series.length ? (
-        <HighchartsReact
-          highcharts={Highcharts}
-          options={options}
-          ref={chartComponentRef}
-          {...props}
-        />
+        <div className="chartContainer">
+          <HighchartsReact
+            highcharts={Highcharts}
+            options={options}
+            ref={chartComponentRef}
+            {...props}
+          />
+        </div>
       ) : (
-        <Empty />
+        <div className="emptyContainer">
+          <Empty />
+        </div>
       )}
     </>
   )

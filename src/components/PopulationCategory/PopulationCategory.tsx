@@ -16,7 +16,7 @@ export const PopulationCategory = ({
   return (
     <div className="categoryContainer">
       <select
-        className="categoryList"
+        className="categorySelect"
         onChange={(e) => changeCategories(e)}
         value={selectedPopulationCategory}
       >

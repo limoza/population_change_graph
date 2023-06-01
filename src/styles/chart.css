@@ -1,0 +1,15 @@
+.chartContainer {
+  margin-top: var(--spacing-size2);
+}
+
+.emptyContainer {
+  margin-top: var(--spacing-size2);
+  padding: 0 var(--spacing-size4) var(--spacing-size4);
+}
+
+.chartEmpty {
+  padding-top: var(--spacing-size10);
+  padding-bottom: var(--spacing-size10);
+  text-align: center;
+  background-color: var(--gray-100);
+}
