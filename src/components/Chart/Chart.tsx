@@ -61,6 +61,9 @@ export const Chart = (
         },
       ],
     },
+    accessibility: {
+      enabled: false,
+    },
   }
 
   const chartComponentRef = useRef<HighchartsReact.RefObject>(null)
