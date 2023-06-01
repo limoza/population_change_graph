@@ -2,7 +2,14 @@
   margin-top: var(--spacing-size8);
   padding-left: var(--spacing-size4);
   padding-right: var(--spacing-size4);
+  text-align: right;
+}
+
+.category__label {
+}
+
+.category__select {
   font-size: var(--font-size-lg);
   line-height: var(--line-height-lg);
-  text-align: right;
+  margin-left: var(--spacing-size2);
 }

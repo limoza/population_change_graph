@@ -15,8 +15,12 @@ export const PopulationCategory = ({
 }: Props) => {
   return (
     <div className="categoryContainer">
+      <label htmlFor="category" className="category__label">
+        区分選択
+      </label>
       <select
-        className="categorySelect"
+        id="category"
+        className="category__select"
         onChange={(e) => changeCategories(e)}
         value={selectedPopulationCategory}
       >
