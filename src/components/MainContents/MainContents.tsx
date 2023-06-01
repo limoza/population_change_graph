@@ -1,5 +1,7 @@
 import { useState, ChangeEvent, useEffect } from 'react'
 import useSWRMutation from 'swr/mutation'
+import { Errors } from '../Errors'
+import { Loading } from '../Loading'
 import { ChartContainer } from '@/components/ChartContainer'
 import { CheckBoxList } from '@/components/CheckBoxList'
 import {
@@ -94,22 +96,30 @@ export const MainContents = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [populationData, selectedPopulationCategory])
 
-  if (prefsError) return <div>failed to load</div>
-  if (populationError) return <div>failed to load</div>
-  if (prefsLoading) return <div>loading...</div>
-
   return (
     <main className="main">
-      <CheckBoxList
-        prefectures={prefsData.result}
-        checkedPrefectures={checkedPrefectures}
-        checkPrefectures={checkPrefectures}
-      />
-      <ChartContainer
-        series={series}
-        selectedPopulationCategory={selectedPopulationCategory}
-        changeCategories={changeCategories}
-      />
+      {prefsError || populationError ? (
+        <Errors />
+      ) : (
+        <>
+          {prefsLoading ? (
+            <Loading />
+          ) : (
+            <>
+              <CheckBoxList
+                prefectures={prefsData.result}
+                checkedPrefectures={checkedPrefectures}
+                checkPrefectures={checkPrefectures}
+              />
+              <ChartContainer
+                series={series}
+                selectedPopulationCategory={selectedPopulationCategory}
+                changeCategories={changeCategories}
+              />
+            </>
+          )}
+        </>
+      )}
     </main>
   )
 }

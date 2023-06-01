@@ -1,0 +1,13 @@
+.errorsContainer {
+  margin-top: var(--spacing-size4);
+  padding: 0 var(--spacing-size4) var(--spacing-size4);
+}
+
+.errors__text {
+  padding-top: var(--spacing-size10);
+  padding-bottom: var(--spacing-size10);
+  text-align: center;
+  background-color: var(--red-100);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}

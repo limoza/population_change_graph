@@ -41,6 +41,18 @@
   --gray-800: #1f2937;
   --gray-900: #111827;
 
+  /* red */
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-800: #991b1b;
+  --red-900: #7f1d1d;
+
   /* blue */
   --blue-50: #eff6ff;
   --blue-100: #dbeafe;
