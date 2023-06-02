@@ -190,3 +190,10 @@ export const prefecturesTestData: PrefsDataType = [
     prefName: '沖縄県',
   },
 ]
+
+export const categories = [
+  { value: '1', option: '総人口' },
+  { value: '2', option: '年少人口' },
+  { value: '3', option: '生産年齢人口' },
+  { value: '4', option: '老年人口' },
+]

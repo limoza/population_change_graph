@@ -1,24 +1,14 @@
-// import { render, screen } from '@testing-library/react'
-// import { Header } from './Header'
+import { render, screen } from '@testing-library/react'
+import { Loading } from './Loading'
 
-// describe('Header components Test', () => {
-//   it('Ensure that there is only one header', () => {
-//     render(<Header />)
-//     expect(screen.getAllByRole('banner')).toHaveLength(1)
-//   })
+describe('Loading components Test', () => {
+  it('Loading is displayed', () => {
+    render(<Loading />)
+    expect(screen.getByRole('image')).toBeInTheDocument()
+  })
 
-//   it('Ensure that there is only one h1', () => {
-//     render(<Header />)
-//     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
-//   })
-
-//   it('should display the correct text', () => {
-//     render(<Header />)
-//     expect(
-//       screen.getByRole('heading', {
-//         level: 1,
-//         name: '都道府県別 総人口推移グラフ',
-//       })
-//     ).toBeInTheDocument()
-//   })
-// })
+  it('Ensure that there is only one Loading', () => {
+    render(<Loading />)
+    expect(screen.getAllByRole('image')).toHaveLength(1)
+  })
+})

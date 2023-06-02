@@ -17,7 +17,7 @@ describe('Header components Test', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: '都道府県別 総人口推移グラフ',
+        name: '都道府県別 人口推移グラフ',
       })
     ).toBeInTheDocument()
   })

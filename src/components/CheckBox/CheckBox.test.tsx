@@ -1,21 +1,79 @@
 import { render, screen } from '@testing-library/react'
-import useSWR from 'swr'
+import userEvent from '@testing-library/user-event'
+import { ChangeEvent, useState } from 'react'
 import { CheckBoxList } from '../CheckBoxList'
-import { CheckBox } from './CheckBox'
+import { changeSelectedPrefectures } from '@/lib/changeSelectedPrefectures'
 import { prefecturesTestData } from '@/test/fixture'
 
 jest.mock('swr')
+const user = userEvent.setup()
 
 describe('CheckBox components Test', () => {
   it('All checkbox for each prefecture should be displayed.', () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    useSWR.mockReturnValue({
-      data: { result: prefecturesTestData },
-    })
+    const checkPrefectures = jest.fn()
+
     render(
-      <CheckBoxList prefectures={prefecturesTestData} checkedPrefectures={[]} />
+      <CheckBoxList
+        prefectures={prefecturesTestData}
+        checkedPrefectures={[]}
+        checkPrefectures={checkPrefectures}
+      />
     )
-    expect(screen.getAllByRole('checkbox')).toHaveLength(47)
+
+    const checkboxElements = screen.getAllByRole('checkbox')
+    expect(checkboxElements).toHaveLength(prefecturesTestData.length)
+  })
+
+  it('None of them should be checked.', () => {
+    const checkPrefectures = jest.fn()
+    render(
+      <CheckBoxList
+        prefectures={prefecturesTestData}
+        checkedPrefectures={[]}
+        checkPrefectures={checkPrefectures}
+      />
+    )
+
+    const checkboxElements = screen.getAllByRole('checkbox')
+
+    checkboxElements.forEach((checkboxElement) => {
+      expect(checkboxElement).not.toBeChecked()
+    })
+  })
+
+  it('Should be able to check all.', () => {
+    const TemporaryComponent = () => {
+      const [checkedPrefectures, setCheckedPrefectures] = useState<number[]>([])
+
+      const checkPrefectures = (e: ChangeEvent<HTMLInputElement>) => {
+        const checkedValue = Number(e.target.value)
+        const isChecked = e.target.checked
+        setCheckedPrefectures((prev) => {
+          const newData = changeSelectedPrefectures(
+            checkedValue,
+            isChecked,
+            prev
+          )
+          return newData
+        })
+      }
+
+      return (
+        <CheckBoxList
+          prefectures={prefecturesTestData}
+          checkedPrefectures={checkedPrefectures}
+          checkPrefectures={(e) => checkPrefectures(e)}
+        />
+      )
+    }
+
+    render(<TemporaryComponent />)
+
+    const checkboxElements = screen.getAllByRole('checkbox')
+
+    checkboxElements.forEach(async (checkbox) => {
+      await user.click(checkbox)
+      expect(checkbox).toBeChecked()
+    })
   })
 })

@@ -1,24 +1,49 @@
-// import { render, screen } from '@testing-library/react'
-// import { Header } from './Header'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { PopulationCategory } from './PopulationCategory'
+import { categories } from '@/test/fixture'
 
-// describe('Header components Test', () => {
-//   it('Ensure that there is only one header', () => {
-//     render(<Header />)
-//     expect(screen.getAllByRole('banner')).toHaveLength(1)
-//   })
+describe('PopulationCategory components Test', () => {
+  it('should display the correct label text', () => {
+    render(
+      <PopulationCategory
+        selectedPopulationCategory={1}
+        changeCategories={() => null}
+      />
+    )
+    expect(screen.getByText('区分選択')).toBeInTheDocument()
+  })
 
-//   it('Ensure that there is only one h1', () => {
-//     render(<Header />)
-//     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
-//   })
+  it('should display the correct select options', () => {
+    render(
+      <PopulationCategory
+        selectedPopulationCategory={1}
+        changeCategories={() => null}
+      />
+    )
+    const optionElements = screen.getAllByRole('option')
 
-//   it('should display the correct text', () => {
-//     render(<Header />)
-//     expect(
-//       screen.getByRole('heading', {
-//         level: 1,
-//         name: '都道府県別 総人口推移グラフ',
-//       })
-//     ).toBeInTheDocument()
-//   })
-// })
+    expect(optionElements).toHaveLength(categories.length)
+
+    optionElements.forEach((optionElement, index) => {
+      expect(optionElement).toHaveValue(categories[index].value)
+    })
+
+    optionElements.forEach((optionElement, index) => {
+      expect(optionElement).toHaveTextContent(categories[index].option)
+    })
+  })
+
+  it('should select correct value', () => {
+    render(
+      <PopulationCategory
+        selectedPopulationCategory={1}
+        changeCategories={() => null}
+      />
+    )
+    const selectElement = screen.getByRole('combobox')
+
+    userEvent.selectOptions(selectElement, '1')
+    expect(selectElement).toHaveValue(categories[0].value)
+  })
+})
