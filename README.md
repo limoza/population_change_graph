@@ -4,13 +4,37 @@
 
 - https://population-change-graph-cd2uageci-limoza.vercel.app/app
 
-## Start
+## セットアップ
+
+1. リポジトリをクローン
+
+```
+git clone git@github.com:limoza/population_change_graph.git
+```
+
+2. install
+
+```
+yarn install
+```
+
+3. API KEY の設定
+   root 直下に`.env.development.local`を作成し、以下の内容を記載。
+   値はご自身の API キーをご記載ください。
+
+```
+NEXT_PUBLIC_REASAS_API_KEY = 'xxx'
+```
+
+## 開発
+
+### Start
 
 ```zsh
 yarn dev
 ```
 
-## Jest Test
+### Jest Test
 
 ```zsh
 yarn jest
@@ -27,10 +51,6 @@ yarn jest
 - Next.js, TypeScript, ESLint, Prettier
   - https://qiita.com/itachi/items/05fbe67c7168703a34e7
   - https://blog.monorevo.jp/post-2104
-- Jest、テスト
-  - https://nishinatoshiharu.com/install-jest-in-next/
-  - フロントエンド開発のためのテスト入門 今からでも知っておきたい自動テスト戦略の必須知識
-    - https://amzn.asia/d/9vNtoSK
 - Highcharts
   - https://github.com/highcharts/highcharts-react
   - https://www.highcharts.com/demo/line-basic
@@ -45,3 +65,7 @@ yarn jest
 - HTML
   - HTML 解体新書-仕様から紐解く本格入門
     - https://amzn.asia/d/33dwbuM
+- Jest、テスト
+  - https://nishinatoshiharu.com/install-jest-in-next/
+  - フロントエンド開発のためのテスト入門 今からでも知っておきたい自動テスト戦略の必須知識
+    - https://amzn.asia/d/9vNtoSK
