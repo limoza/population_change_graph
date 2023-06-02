@@ -2,19 +2,18 @@ import * as Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React, { useRef } from 'react'
 import { Empty } from '@/components/Empty'
-import { PopulationSeries } from '@/types'
+import { POPULATION_CATEGORIES } from '@/constants/population/constants'
 
-export const Chart = (
-  props: HighchartsReact.Props,
-  series: PopulationSeries
-) => {
+export const Chart = (props: HighchartsReact.Props) => {
+  const populationCategories = POPULATION_CATEGORIES
+
   const options: Highcharts.Options = {
     title: {
       text: '都道府県別 総人口推移グラフ',
       align: 'left',
     },
     subtitle: {
-      text: '総人口',
+      text: populationCategories[props.selectedPopulationCategory - 1].label,
       align: 'left',
     },
     yAxis: {

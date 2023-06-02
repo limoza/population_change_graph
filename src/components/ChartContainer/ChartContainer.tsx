@@ -19,7 +19,10 @@ export const ChartContainer = ({
         selectedPopulationCategory={selectedPopulationCategory}
         changeCategories={changeCategories}
       />
-      <Chart series={series} />
+      <Chart
+        selectedPopulationCategory={selectedPopulationCategory}
+        series={series}
+      />
     </>
   )
 }
