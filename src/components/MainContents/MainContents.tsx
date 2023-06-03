@@ -7,13 +7,13 @@ import { CheckBoxList } from '@/components/CheckBoxList'
 import {
   REASAS_PREFS_URL,
   REASAS_POPULATION_URL,
+  FETCH_OPTIONS,
 } from '@/constants/REASAS/constants'
 import { useGetPrefsData } from '@/hooks/useGetPrefsData'
 import { changeSelectedPrefectures } from '@/lib/changeSelectedPrefectures'
 import { createSeriesData } from '@/lib/createSeriesData'
 import { deletedData } from '@/lib/deletedData'
 import { formatData } from '@/lib/formatData'
-import { populationFetcher } from '@/lib/populationFetcher'
 import { PopulationSeries, FormattedPopulationData } from '@/types'
 
 export const MainContents = () => {
@@ -37,7 +37,13 @@ export const MainContents = () => {
     data: populationData,
     error: populationError,
     trigger,
-  } = useSWRMutation(REASAS_POPULATION_URL, populationFetcher)
+  } = useSWRMutation(
+    REASAS_POPULATION_URL,
+    async (url: string, { arg }: { arg: { prefID: number } }) => {
+      const res = await fetch(`${url}${arg.prefID}`, FETCH_OPTIONS)
+      return res.json()
+    }
+  )
 
   const checkPrefectures = (e: ChangeEvent<HTMLInputElement>) => {
     const checkedValue = Number(e.target.value)
