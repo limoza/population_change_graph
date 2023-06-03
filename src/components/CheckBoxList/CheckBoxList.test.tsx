@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-// import useSWR from 'swr'
 import { CheckBoxList } from './CheckBoxList'
 import { prefecturesTestData } from '@/test/fixture'
 
