@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect } from 'react'
+import { useState, ChangeEvent, useEffect, useRef } from 'react'
 import useSWRMutation from 'swr/mutation'
 import { Errors } from '../Errors'
 import { Loading } from '../Loading'
@@ -26,6 +26,7 @@ export const MainContents = () => {
     FormattedPopulationData[]
   >([])
   const [series, setSeries] = useState<PopulationSeries>([])
+  const ref = useRef(true)
 
   const {
     data: prefsData,
@@ -72,33 +73,35 @@ export const MainContents = () => {
   }
 
   useEffect(() => {
-    if (populationData) {
-      const { data: extractedPopulationData } = populationData.result
-
-      const isChangeCategory = previousCategory !== selectedPopulationCategory
-
-      if (isChangeCategory) {
-        setPreviousCategory(selectedPopulationCategory)
-      } else {
-        const formattedData = formatData(
-          extractedPopulationData,
-          checkedPrefectureName
-        )
-        setPopulationSaveData((prev) => {
-          const newState = [...prev, formattedData]
-          return newState
-        })
-      }
-
-      const seriesData = isChangeCategory
-        ? populationSaveData
-        : [
-            ...populationSaveData,
-            formatData(extractedPopulationData, checkedPrefectureName),
-          ]
-
-      setSeries(createSeriesData(seriesData, selectedPopulationCategory))
+    if (ref.current) {
+      ref.current = false
+      return
     }
+    const { data: extractedPopulationData } = populationData.result
+
+    const isChangeCategory = previousCategory !== selectedPopulationCategory
+
+    if (isChangeCategory) {
+      setPreviousCategory(selectedPopulationCategory)
+    } else {
+      const formattedData = formatData(
+        extractedPopulationData,
+        checkedPrefectureName
+      )
+      setPopulationSaveData((prev) => {
+        const newState = [...prev, formattedData]
+        return newState
+      })
+    }
+
+    const seriesData = isChangeCategory
+      ? populationSaveData
+      : [
+          ...populationSaveData,
+          formatData(extractedPopulationData, checkedPrefectureName),
+        ]
+
+    setSeries(createSeriesData(seriesData, selectedPopulationCategory))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [populationData, selectedPopulationCategory])
 
