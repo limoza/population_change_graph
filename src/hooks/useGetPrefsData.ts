@@ -1,8 +1,11 @@
 import useSWR from 'swr'
-import { prefFetcher } from '@/lib/prefFetcher'
+import { FETCH_OPTIONS } from '@/constants/REASAS/constants'
 
 export const useGetPrefsData = (url: string) => {
-  prefFetcher(url)
+  const prefFetcher = async (url: string) => {
+    const res = await fetch(url, FETCH_OPTIONS)
+    return res.json()
+  }
 
   const { data, error, isLoading } = useSWR(url, prefFetcher)
   return { data, error, isLoading }
