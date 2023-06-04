@@ -1,9 +1,7 @@
-import { IcBaselineRefresh } from '../Icons/IcBaselineRefresh'
+import { IcBaselineRefresh } from '@/components/Icons/IcBaselineRefresh'
 
-export const Loading = () => {
-  return (
-    <div className="loadingContainer">
-      <IcBaselineRefresh className="loadingIcon" />
-    </div>
-  )
-}
+export const Loading = () => (
+  <div className="loadingContainer">
+    <IcBaselineRefresh className="loadingIcon" />
+  </div>
+)

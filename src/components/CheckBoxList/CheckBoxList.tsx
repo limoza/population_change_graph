@@ -12,22 +12,20 @@ export const CheckBoxList = ({
   prefectures,
   checkedPrefectures,
   checkPrefectures,
-}: Props) => {
-  return (
-    <fieldset name="prefectureContainer" className="prefectureContainer">
-      <legend>
-        <h2 className="prefectureContainer__title">都道府県一覧</h2>
-      </legend>
-      <ul className="prefectureList">
-        {prefectures.map((prefecture) => (
-          <CheckBox
-            key={`prefCode-${prefecture.prefCode}`}
-            prefecture={prefecture}
-            checkedPrefectures={checkedPrefectures}
-            checkPrefectures={checkPrefectures}
-          />
-        ))}
-      </ul>
-    </fieldset>
-  )
-}
+}: Props) => (
+  <fieldset name="prefectureContainer" className="prefectureContainer">
+    <legend>
+      <h2 className="prefectureContainer__title">都道府県一覧</h2>
+    </legend>
+    <ul className="prefectureList">
+      {prefectures.map((prefecture) => (
+        <CheckBox
+          key={`prefCode-${prefecture.prefCode}`}
+          prefecture={prefecture}
+          checkedPrefectures={checkedPrefectures}
+          checkPrefectures={checkPrefectures}
+        />
+      ))}
+    </ul>
+  </fieldset>
+)

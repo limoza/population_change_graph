@@ -5,15 +5,13 @@ import { Empty } from '@/components/Empty'
 import { POPULATION_CATEGORIES } from '@/constants/population/constants'
 
 export const Chart = (props: HighchartsReact.Props) => {
-  const populationCategories = POPULATION_CATEGORIES
-
   const options: Highcharts.Options = {
     title: {
       text: '都道府県別 総人口推移グラフ',
       align: 'left',
     },
     subtitle: {
-      text: populationCategories[props.selectedPopulationCategory - 1].label,
+      text: POPULATION_CATEGORIES[props.selectedPopulationCategory - 1].label,
       align: 'left',
     },
     yAxis: {

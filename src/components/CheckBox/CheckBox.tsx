@@ -25,8 +25,8 @@ export const CheckBox = React.memo(
           className="visually-hidden"
         />
         <label
-          className={`prefectureList__item__label ${
-            isChecked ? `prefectureList__item__label--checked` : ``
+          className={`prefectureList__item__label${
+            isChecked ? ` prefectureList__item__label--checked` : ``
           }`}
           htmlFor={`prefCode-${prefCode}`}
         >

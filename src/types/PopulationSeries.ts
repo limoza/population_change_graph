@@ -5,7 +5,7 @@ import {
   ELDERLY_POPULATION,
 } from '@/constants/population/constants'
 
-export type ExtractedPopulationDataLabel =
+type ExtractedPopulationDataLabel =
   | typeof TOTAL_POPULATION
   | typeof POPULATION_UNDER_15
   | typeof WORKING_AGE_POPULATION

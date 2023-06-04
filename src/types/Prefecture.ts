@@ -1,5 +1,5 @@
-export type PrefCodeType = number
-export type PrefNameType = string
+type PrefCodeType = number
+type PrefNameType = string
 
 export type PrefDataType = {
   prefCode: PrefCodeType

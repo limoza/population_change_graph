@@ -12,17 +12,15 @@ export const ChartContainer = ({
   series,
   selectedPopulationCategory,
   changeCategories,
-}: Props) => {
-  return (
-    <>
-      <PopulationCategory
-        selectedPopulationCategory={selectedPopulationCategory}
-        changeCategories={changeCategories}
-      />
-      <Chart
-        selectedPopulationCategory={selectedPopulationCategory}
-        series={series}
-      />
-    </>
-  )
-}
+}: Props) => (
+  <>
+    <PopulationCategory
+      selectedPopulationCategory={selectedPopulationCategory}
+      changeCategories={changeCategories}
+    />
+    <Chart
+      selectedPopulationCategory={selectedPopulationCategory}
+      series={series}
+    />
+  </>
+)

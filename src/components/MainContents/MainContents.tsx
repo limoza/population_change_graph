@@ -1,9 +1,9 @@
 import { useState, ChangeEvent, useEffect, useRef } from 'react'
 import useSWRMutation from 'swr/mutation'
-import { Errors } from '../Errors'
-import { Loading } from '../Loading'
 import { ChartContainer } from '@/components/ChartContainer'
 import { CheckBoxList } from '@/components/CheckBoxList'
+import { Errors } from '@/components/Errors'
+import { Loading } from '@/components/Loading'
 import {
   REASAS_PREFS_URL,
   REASAS_POPULATION_URL,
