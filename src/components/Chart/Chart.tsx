@@ -4,6 +4,7 @@ import React, { useRef } from 'react'
 import { Empty } from '@/components/Empty'
 import { POPULATION_CATEGORIES } from '@/constants/population/constants'
 
+// リファクタ用コメント
 export const Chart = (props: HighchartsReact.Props) => {
   const options: Highcharts.Options = {
     title: {

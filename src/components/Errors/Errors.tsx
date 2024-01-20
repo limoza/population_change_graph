@@ -1,3 +1,4 @@
+// リファクタ用コメント
 export const Errors = () => (
   <div className="errorsContainer">
     <p className="errors__text">

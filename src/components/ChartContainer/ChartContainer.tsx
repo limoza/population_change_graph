@@ -7,7 +7,7 @@ type Props = {
   selectedPopulationCategory: number
   changeCategories: ChangeCategories
 }
-
+// リファクタ用コメント
 export const ChartContainer = ({
   series,
   selectedPopulationCategory,

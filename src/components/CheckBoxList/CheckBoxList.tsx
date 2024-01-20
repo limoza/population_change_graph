@@ -8,6 +8,7 @@ type Props = {
   checkPrefectures: ClickCheckBox
 }
 
+// リファクタ用コメント
 export const CheckBoxList = ({
   prefectures,
   checkedPrefectures,
