@@ -7,6 +7,7 @@ type Props = {
   changeCategories: ChangeCategories
 }
 
+// リファクタ用コメント
 export const PopulationCategory = ({
   selectedPopulationCategory,
   changeCategories,

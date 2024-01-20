@@ -7,6 +7,7 @@ type Props = {
   checkPrefectures: ClickCheckBox
 }
 
+// リファクタ用コメント
 export const CheckBox = React.memo(
   ({ prefecture, checkedPrefectures, checkPrefectures }: Props) => {
     const { prefCode, prefName } = prefecture

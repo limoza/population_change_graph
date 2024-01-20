@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 import { FETCH_OPTIONS } from '@/constants/REASAS/constants'
 
+// リファクタ用コメント
 export const useGetPrefsData = (url: string) => {
   const prefFetcher = async (url: string) => {
     const res = await fetch(url, FETCH_OPTIONS)

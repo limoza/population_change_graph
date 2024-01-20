@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import '@/styles/index.css'
 
+// リファクタ用コメント
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
     <div className="app">

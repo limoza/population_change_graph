@@ -66,6 +66,7 @@ export const MainContents = () => {
     }
   }
 
+  // リファクタ用コメント
   const changeCategories = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = Number(e.target.value)
     setSelectedPopulationCategory(selectedValue)
